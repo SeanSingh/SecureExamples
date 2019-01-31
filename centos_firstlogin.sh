@@ -1,6 +1,7 @@
 username="$(whoami)"
 id_rsa="$(cat ~/.ssh/$pubkey)"
 pubkey="$(curl -L https://raw.githubusercontent.com/Open-NGO/SecureExamples/master/ssh_pubkey_tf)"
+GithubToken="$(~/.Github.Token)"
 
 sudo echo "Compression no" >> /etc/ssh/sshd_config
 sudo sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
@@ -18,4 +19,8 @@ sudo systemctl restart sshd
 sudo mkdir -p ~/.ssh && chmod 700 ~/.ssh
 echo "$pubkey" >> ~/.ssh/authorized_keys
 sudo chmod 600 ~/.ssh/authorized_keys
-# mkdir -p $HOME/.ssh && chmod 700 $HOME/.ssh && echo "$pubkey" >> $HOME/.ssh/authorized_keys && chmod 600 $HOME/.ssh/authorized_keys"
+
+
+echo " Notes on creating github access tokens https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/" >> ~/github.access
+echo "curl -H 'Authorization: token ~/.Github.Token' -H 'Accept: application/vnd.github.v4.raw' -O -L https://api.github.com/repos/SeanSingh/repo/contents/path" >> ~/github.access
+echo "AccessTokenGoesHere" >> ~/.Github.Token
