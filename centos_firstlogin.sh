@@ -22,5 +22,5 @@ sudo chmod 600 ~/.ssh/authorized_keys
 
 
 echo " Notes on creating github access tokens https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/" >> ~/github.access
-echo "curl -H 'Authorization: token ~/.Github.Token' -H 'Accept: application/vnd.github.v4.raw' -O -L https://api.github.com/repos/SeanSingh/repo/contents/path" >> ~/github.access
+echo "curl -H 'Authorization: token ~/.Github.Token' -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/SeanSingh/repo/contents/path" >> ~/github.access
 echo "AccessTokenGoesHere" >> ~/.Github.Token
