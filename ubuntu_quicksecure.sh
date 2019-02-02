@@ -37,4 +37,3 @@ IfaceList="$(ip addr | grep state | cut -d ":" -f2 | sed -e 's/^[ \t]*//' | sed 
 #Deny Avahi from listening on any interface.
 sudo sed -i "s/#deny-interfaces\=eth1/deny-interfaces\=$IfaceList/g" /etc/avahi/avahi-daemon.conf
 sudo sed -i 's/enable-wide-area=yes/enable-wide-area=no/g' /etc/avahi/avahi-daemon.conf
-#deny-interfaces=eth1
