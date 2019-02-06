@@ -1,7 +1,7 @@
 username="$(whoami)"
 id_rsa="$(cat ~/.ssh/$pubkey)"
 pubkey="$(curl -L https://raw.githubusercontent.com/Open-NGO/SecureExamples/master/ssh_pubkey_tf)"
-GithubToken="$(~/.Github.Token)"
+#GithubToken="$(~/.Github.Token)"
 
 sudo echo "Compression no" >> /etc/ssh/sshd_config
 sudo sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
@@ -20,6 +20,13 @@ sudo mkdir -p ~/.ssh && chmod 700 ~/.ssh
 echo "$pubkey" >> ~/.ssh/authorized_keys
 sudo chmod 600 ~/.ssh/authorized_keys
 
+#Set HOSTNAME
+hostnamectl set-hostname F.Q.D.N
+
+# Another hostname file location is /etc/hostname
+
+#Set hostname in the sysconfig/network
+#sudo nano /etc/sysconfig/network
 
 echo " Notes on creating github access tokens https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/" >> ~/github.access
 echo "curl -H 'Authorization: token ~/.Github.Token' -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/SeanSingh/repo/contents/path" >> ~/github.access
